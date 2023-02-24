@@ -22,3 +22,4 @@ $sumExchange = readline("Введите сумму: ");
 $formula = $course[$currencyFrom] / $course[$currencyTo] * $sumExchange;
 $res = number_format($formula, 2, '.', ',');
 echo "За $sumExchange $currencyFrom Вы получите $res $currencyTo";
+echo "HUI";
