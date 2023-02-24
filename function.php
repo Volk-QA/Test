@@ -28,4 +28,3 @@ function convert($from, $to, $amount)
     $summary = number_format($calc, 2, '.', ',');
     return $summary;
 }
-echo "HUI";
