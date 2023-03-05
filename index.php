@@ -1,11 +1,5 @@
 <?php
-$course = [
-    "usd" => 74.77,
-    "eur" => 80,
-    "jpy" => 0.55,
-    "rub" => 1,
-    "cny" => 10.5
-];
+include "/Classes/convertor.php";
 $listCurrency = implode(', ', (array_keys($course)));
 echo "Список поддерживаемых валют - $listCurrency \n";
 $currencyFrom = readline("Из какой валюты: ");
@@ -19,6 +13,12 @@ if (!isset($course[$currencyTo])) {
     exit;
 }
 $sumExchange = readline("Введите сумму: ");
-$formula = $course[$currencyFrom] / $course[$currencyTo] * $sumExchange;
-$res = number_format($formula, 2, '.', ',');
-echo "За $sumExchange $currencyFrom Вы получите $res $currencyTo";
+$res = convert($course[$currencyFrom], $course[$currencyTo], $sumExchange);
+$summary = number_format($res, 2, '.', ',');
+echo "За $sumExchange $currencyFrom Вы получите $summary $currencyTo";
+
+function convert($from, $to, $amount)
+{
+    $calc = $from / $to * $amount;
+    return $calc;
+}
