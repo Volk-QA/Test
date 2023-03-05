@@ -8,7 +8,6 @@ class Convertor
         "rub" => 1,
         "cny" => 10.5
     ];
-    public $currencyStr;
     public function getRates()
     {
         return $this->rate;
