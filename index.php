@@ -1,6 +1,6 @@
 <?php
-include "/Classes/convertor.php";
-$listCurrency = implode(', ', (array_keys($course)));
+include "Classes/convertor.php";
+
 echo "Список поддерживаемых валют - $listCurrency \n";
 $currencyFrom = readline("Из какой валюты: ");
 if (!isset($course[$currencyFrom])) {
@@ -13,12 +13,9 @@ if (!isset($course[$currencyTo])) {
     exit;
 }
 $sumExchange = readline("Введите сумму: ");
-$res = convert($course[$currencyFrom], $course[$currencyTo], $sumExchange);
+$listCurrency = implode(', ', (array_keys($course)));
+$curen = new Convertor();
+$curen -> convert($course[$currencyFrom], $course[$currencyTo], $sumExchange);
 $summary = number_format($res, 2, '.', ',');
 echo "За $sumExchange $currencyFrom Вы получите $summary $currencyTo";
-
-function convert($from, $to, $amount)
-{
-    $calc = $from / $to * $amount;
-    return $calc;
-}
+echo $curen -> getRates();

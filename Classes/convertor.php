@@ -10,14 +10,15 @@ class Convertor
     ];
     public function getRates()
     {
-        return $this->$rate;
+        return $this->rate;
     }
     public function getCurrencies()
     {
-        return $this->$rate;
+        return $this->implode(', ', (array_keys($rate)));
     }
     public function convert($from, $to, $amount)
     {
-        return $this->$rate;
+        $calc = $from / $to * $amount;
+        return $calc;
     }
 }
